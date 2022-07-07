@@ -1,4 +1,29 @@
-#boxes {
+/* html,
+body {
+  height: 100%;
+} */
+
+#boxes{
   display: flex;
   flex-direction: row;
+  height: calc(100vh - 16px);
+  width: calc(100vh - 16px);
+
+  margin: auto;
+  /* flex: 1; */
+  /* flex-flow: row nowrap; */
+  justify-content: space-evenly;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-evenly;
+}
+
+.box {
+  display: flex;
+  flex-grow: 1;
+  background-color: WhiteSmoke;
 }

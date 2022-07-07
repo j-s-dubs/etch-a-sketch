@@ -1,4 +1,5 @@
-let dimension = 16
+// create canvas
+let dimension = 100
 
 buildGrid(dimension)
 
@@ -21,17 +22,20 @@ function createRows(dimension) {
   for (let index = 0; index < columns.length; index++) {
     let box = document.createElement('div')
     box.className = 'box'
-    box.innerHTML = 'X'
+    // box.innerHTML = 'X'
     for (let i = 0; i < dimension; i++) {
       columns[i].appendChild(box.cloneNode(true))
     }
   }
 }
 
-// buttons.forEach((button) => {
-//   button.addEventListener('click', () => {
-//     message.innerHTML = playRound(button.id)
-//     trackScore()
-//     printScore()
-//   })
-// })
+// drawing logic
+let canvas = document.querySelectorAll('div.box')
+
+canvas.forEach((box) => {
+  box.addEventListener('mouseover', (e) => {
+    if (e.buttons == 1) {
+    box.style.backgroundColor = 'Gray'
+    }
+  })
+})
