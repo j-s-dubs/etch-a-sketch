@@ -41,8 +41,12 @@ function allowDrawing() {
       box.style.backgroundColor = 'Gray'
       }
     })
+    box.addEventListener('mousedown', () => {
+      box.style.backgroundColor = 'Gray'
+    })
   })
 }
+
 // navbar
 let resolution = document.getElementById('resolution')
 
