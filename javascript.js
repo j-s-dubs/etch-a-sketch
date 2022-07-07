@@ -1,8 +1,10 @@
-// create canvas
-let dimension = 100
+
+let dimension = 80
 
 buildGrid(dimension)
+allowDrawing()
 
+// canvas logic
 function buildGrid(dimension) {
   createColumns(dimension)
   createRows(dimension)
@@ -30,12 +32,39 @@ function createRows(dimension) {
 }
 
 // drawing logic
-let canvas = document.querySelectorAll('div.box')
 
-canvas.forEach((box) => {
-  box.addEventListener('mouseover', (e) => {
-    if (e.buttons == 1) {
-    box.style.backgroundColor = 'Gray'
-    }
+function allowDrawing() {
+  let canvas = document.querySelectorAll('div.box')
+  canvas.forEach((box) => {
+    box.addEventListener('mouseover', (e) => {
+      if (e.buttons == 1) {
+      box.style.backgroundColor = 'Gray'
+      }
+    })
   })
+}
+// navbar
+let resolution = document.getElementById('resolution')
+
+resolution.addEventListener('click', () => {
+  let resolutionInput = prompt('How many pixels wide would you like the cavanvas? (Max 200)')
+  dimension = Math.min(200, resolutionInput)
+  let container = document.getElementById('boxes')
+  while (container.firstChild) {
+    container.removeChild(container.firstChild)
+  }
+  buildGrid(dimension)
+  allowDrawing()
+  console.log(newResolution)
+})
+
+let clearBtn = document.getElementById('clear')
+
+clearBtn.addEventListener('click', () => {
+  let container = document.getElementById('boxes')
+  while (container.firstChild) {
+    container.removeChild(container.firstChild)
+  }
+  buildGrid(dimension)
+  allowDrawing()
 })
