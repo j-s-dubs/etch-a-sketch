@@ -1,4 +1,4 @@
-/* #boxes {
-  display: grid;
-  grid-template-columns: auto auto;
-} */
+#boxes {
+  display: flex;
+  flex-direction: row;
+}
