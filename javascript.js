@@ -1,9 +1,9 @@
 // launch settings/functions
 let dimension = 16
-let drawColor = 'Gray'
+let drawColor = "#808080"
 
 buildGrid(dimension)
-allowDrawing()
+allowDrawing(drawColor)
 
 // canvas logic
 function buildGrid(dimension) {
@@ -33,7 +33,7 @@ function createRows(dimension) {
 }
 
 // drawing logic
-function allowDrawing() {
+function allowDrawing(drawColor) {
   let canvas = document.querySelectorAll('div.box')
   canvas.forEach((box) => {
     box.addEventListener('mouseover', (e) => {
@@ -65,10 +65,30 @@ resolution.addEventListener('click', () => {
 // navbar: color picker
 let colorpicker = document.getElementById('colorpicker')
 
+colorpicker.value = drawColor
+
 colorpicker.onchange = function() {
   drawColor = this.value;
-  allowDrawing()
+  allowDrawing(drawColor)
 }
+
+// navbar: eraser
+let eraser = document.getElementById('eraser')
+let eraserStatus = 0
+
+eraser.addEventListener('click', () => {
+  if (eraserStatus == 0) {
+    // need to make this more flexible
+    let eraseColor = 'WhiteSmoke'
+    allowDrawing(eraseColor)
+    eraser.classList.add('eraser-on')
+    eraserStatus = 1
+  } else {
+    allowDrawing(drawColor)
+    eraser.classList.remove('eraser-on')
+    eraserStatus = 0
+  }
+})
 
 // navbar: clear button
 let clearBtn = document.getElementById('clear')
