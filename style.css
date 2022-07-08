@@ -1,17 +1,51 @@
-/* html,
-body {
-  height: 100%;
-} */
+html {
+  background: linear-gradient( rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5) ), url(./giraffe_etch.jpg) top center;
+  background-size: cover;
+  background-attachment: fixed;
+  /* background-blend-mode: darken; */
+}
 
-#boxes{
+body {
+  /* background-attachment: fixed; */
+}
+
+.nav {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 16px);
-  width: calc(100vh - 16px);
+  background-color: paleGreen;
+  height: 80px;
+  justify-content: space-around;
+  align-items: center;
+  margin: -8px;
+  margin-bottom: 16px;
+}
 
+button {
+  height: 40px;
+  width: 100px;
+  size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  font-family: monospace;
+  border: 0px;
+  border-radius: 15px;
+  padding: 0px;
+}
+
+h1 {
+  color: royalBlue;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+#boxes {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 80px - 16px - 16px);
+  width: calc(100vh - 80px - 16px - 16px);
   margin: auto;
-  /* flex: 1; */
-  /* flex-flow: row nowrap; */
   justify-content: space-evenly;
 }
 

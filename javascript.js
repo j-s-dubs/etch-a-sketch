@@ -1,5 +1,5 @@
 
-let dimension = 80
+let dimension = 16
 
 buildGrid(dimension)
 allowDrawing()
