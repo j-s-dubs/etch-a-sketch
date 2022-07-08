@@ -1,5 +1,6 @@
-
+// launch settings/functions
 let dimension = 16
+let drawColor = 'Gray'
 
 buildGrid(dimension)
 allowDrawing()
@@ -32,22 +33,21 @@ function createRows(dimension) {
 }
 
 // drawing logic
-
 function allowDrawing() {
   let canvas = document.querySelectorAll('div.box')
   canvas.forEach((box) => {
     box.addEventListener('mouseover', (e) => {
       if (e.buttons == 1) {
-      box.style.backgroundColor = 'Gray'
+      box.style.backgroundColor = drawColor
       }
     })
     box.addEventListener('mousedown', () => {
-      box.style.backgroundColor = 'Gray'
+      box.style.backgroundColor = drawColor
     })
   })
 }
 
-// navbar
+// navbar: resolution button
 let resolution = document.getElementById('resolution')
 
 resolution.addEventListener('click', () => {
@@ -62,6 +62,15 @@ resolution.addEventListener('click', () => {
   console.log(newResolution)
 })
 
+// navbar: color picker
+let colorpicker = document.getElementById('colorpicker')
+
+colorpicker.onchange = function() {
+  drawColor = this.value;
+  allowDrawing()
+}
+
+// navbar: clear button
 let clearBtn = document.getElementById('clear')
 
 clearBtn.addEventListener('click', () => {

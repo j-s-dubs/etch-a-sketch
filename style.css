@@ -33,6 +33,18 @@ button {
   padding: 0px;
 }
 
+#colorpicker {
+  height: 40px;
+  width: 100px;
+  size: 20px;
+  border: 0px;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 h1 {
   color: royalBlue;
   font-family: monospace;
