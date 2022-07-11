@@ -2,6 +2,8 @@
 // remove lines from download
 // install html2canvas in repo
 
+// import * as html2canvas from '/node_modules/html2canvas/dist/html2canvas.min.js';
+
 // launch settings/functions
 let dimension = 16
 let drawColor = "#808080"
