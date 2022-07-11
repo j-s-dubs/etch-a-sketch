@@ -64,8 +64,8 @@ h1 {
 #boxes {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 80px - 16px - 16px);
-  width: calc(100vh - 80px - 16px - 16px);
+  height: calc(100vh - 80px - 16px - 16px - 80px);
+  width: calc(100vh - 80px - 16px - 16px - 80px);
   margin: auto;
   justify-content: space-evenly;
 }
@@ -80,5 +80,15 @@ h1 {
 .box {
   display: flex;
   flex-grow: 1;
-  background-color: WhiteSmoke;
+}
+
+.bottomBar {
+  display: flex;
+  flex-direction: row;
+  background-color: paleGreen;
+  height: 80px;
+  justify-content: space-around;
+  align-items: center;
+  margin: -8px;
+  margin-top: 16px;
 }

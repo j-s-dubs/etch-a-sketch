@@ -1,6 +1,11 @@
+// TODO
+// remove lines from download
+// install html2canvas in repo
+
 // launch settings/functions
 let dimension = 16
 let drawColor = "#808080"
+let canvasColor = 'whiteSmoke'
 
 buildGrid(dimension)
 allowDrawing(drawColor)
@@ -25,7 +30,7 @@ function createRows(dimension) {
   for (let index = 0; index < columns.length; index++) {
     let box = document.createElement('div')
     box.className = 'box'
-    // box.innerHTML = 'X'
+    box.style.backgroundColor = canvasColor
     for (let i = 0; i < dimension; i++) {
       columns[i].appendChild(box.cloneNode(true))
     }
@@ -51,15 +56,16 @@ function allowDrawing(drawColor) {
 let resolution = document.getElementById('resolution')
 
 resolution.addEventListener('click', () => {
-  let resolutionInput = prompt('How many pixels wide would you like the cavanvas? (Max 200)')
+  let resolutionInput = prompt(
+    'How many pixels wide would you like the cavanvas? (Max 200)'
+  )
   dimension = Math.min(200, resolutionInput)
   let container = document.getElementById('boxes')
   while (container.firstChild) {
     container.removeChild(container.firstChild)
   }
   buildGrid(dimension)
-  allowDrawing()
-  console.log(newResolution)
+  allowDrawing(drawColor)
 })
 
 // navbar: color picker
@@ -68,8 +74,10 @@ let colorpicker = document.getElementById('colorpicker')
 colorpicker.value = drawColor
 
 colorpicker.onchange = function() {
-  drawColor = this.value;
-  allowDrawing(drawColor)
+  drawColor = this.value
+  if (eraserStatus == 0) {
+    allowDrawing(drawColor)
+  }
 }
 
 // navbar: eraser
@@ -79,7 +87,7 @@ let eraserStatus = 0
 eraser.addEventListener('click', () => {
   if (eraserStatus == 0) {
     // need to make this more flexible
-    let eraseColor = 'WhiteSmoke'
+    let eraseColor = canvasColor
     allowDrawing(eraseColor)
     eraser.classList.add('eraser-on')
     eraserStatus = 1
@@ -99,5 +107,25 @@ clearBtn.addEventListener('click', () => {
     container.removeChild(container.firstChild)
   }
   buildGrid(dimension)
-  allowDrawing()
+  allowDrawing(drawColor)
 })
+
+// bottom download button
+let downloadBtn = document.getElementById('download')
+
+downloadBtn.addEventListener('click', () => {
+  let download = document.getElementById('boxes')
+  downloadDrawing()
+})
+
+function downloadDrawing() {
+  let drawing = document.getElementById('boxes')
+  html2canvas(drawing, {allowTaint: true}).then(function (drawing) {
+    let link = document.createElement('a')
+    document.body.appendChild(link)
+    link.download = 'sketch.png'
+    link.href = drawing.toDataURL()
+    // link.target = '_blank'
+    link.click()
+  })
+}
